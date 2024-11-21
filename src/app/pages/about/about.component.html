@@ -1,0 +1,95 @@
+<div class="about-container">
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Our Story</h1>
+      <p>Crafting Elegance in Every Design</p>
+    </div>
+  </section>
+
+  <section class="mission-section">
+    <div class="content-wrapper">
+      <div class="mission-content">
+        <h2>Our Mission</h2>
+        <p>At Elegant Card Designs, we believe that every special moment deserves to be celebrated with sophistication and style. Our mission is to create premium card designs that elevate your most cherished occasions into unforgettable memories.</p>
+      </div>
+      <div class="mission-image" [class.loading]="!imagesLoaded">
+        <img [src]="missionImage" alt="Our mission" [class.visible]="imagesLoaded">
+        <div class="loading-overlay" *ngIf="!imagesLoaded">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="content-wrapper">
+      <h2>Our Values</h2>
+      <div class="values-image" [class.loading]="!imagesLoaded">
+        <img [src]="valuesImage" alt="Our values in action" [class.visible]="imagesLoaded">
+        <div class="loading-overlay" *ngIf="!imagesLoaded">
+          <div class="spinner"></div>
+        </div>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <i class="fas fa-gem"></i>
+          <h3>Premium Quality</h3>
+          <p>We use only the finest materials and cutting-edge design techniques.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-heart"></i>
+          <h3>Customer Focus</h3>
+          <p>Your satisfaction and vision are at the heart of everything we do.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-paint-brush"></i>
+          <h3>Creative Excellence</h3>
+          <p>We push boundaries to create unique and memorable designs.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-leaf"></i>
+          <h3>Sustainability</h3>
+          <p>Committed to eco-friendly practices and materials.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="content-wrapper">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="team-image" [class.loading]="!imagesLoaded">
+            <img [src]="teamImages['team1']" alt="Sarah Johnson" [class.visible]="imagesLoaded">
+            <div class="loading-overlay" *ngIf="!imagesLoaded">
+              <div class="spinner"></div>
+            </div>
+          </div>
+          <h3>Sarah Johnson</h3>
+          <p>Lead Designer</p>
+        </div>
+        <div class="team-member">
+          <div class="team-image" [class.loading]="!imagesLoaded">
+            <img [src]="teamImages['team2']" alt="Michael Chen" [class.visible]="imagesLoaded">
+            <div class="loading-overlay" *ngIf="!imagesLoaded">
+              <div class="spinner"></div>
+            </div>
+          </div>
+          <h3>Michael Chen</h3>
+          <p>Creative Director</p>
+        </div>
+        <div class="team-member">
+          <div class="team-image" [class.loading]="!imagesLoaded">
+            <img [src]="teamImages['team3']" alt="Emily Parker" [class.visible]="imagesLoaded">
+            <div class="loading-overlay" *ngIf="!imagesLoaded">
+              <div class="spinner"></div>
+            </div>
+          </div>
+          <h3>Emily Parker</h3>
+          <p>Design Specialist</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

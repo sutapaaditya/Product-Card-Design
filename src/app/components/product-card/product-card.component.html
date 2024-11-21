@@ -1,0 +1,9 @@
+<div class="product-card">
+  <img [src]="product.imageUrl" [alt]="product.name" class="product-image">
+  <div class="product-content">
+    <h3>{{ product.name }}</h3>
+    <p class="price">{{ product.price | currency }}</p>
+    <p class="description">{{ product.description }}</p>
+    <a [routerLink]="['/product', product.id]" class="buy-button">View Details</a>
+  </div>
+</div>

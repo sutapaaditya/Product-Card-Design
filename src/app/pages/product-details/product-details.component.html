@@ -1,0 +1,102 @@
+<div class="product-details-container" *ngIf="product">
+  <div class="content-wrapper">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a routerLink="/">Home</a> / 
+      <a routerLink="/products">Products</a> / 
+      <span>{{product.name}}</span>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product Images -->
+      <div class="product-images">
+        <div class="main-image" [class.loading]="!imagesLoaded">
+          <img [src]="selectedImage" [alt]="product.name" [class.visible]="imagesLoaded">
+          <div class="loading-overlay" *ngIf="!imagesLoaded">
+            <div class="spinner"></div>
+          </div>
+        </div>
+        <div class="thumbnail-grid" *ngIf="product.additionalImages?.length">
+          <div class="thumbnail" 
+               *ngFor="let image of product.additionalImages"
+               [class.active]="selectedImage === image"
+               (click)="setSelectedImage(image)"
+               [class.loading]="!imagesLoaded">
+            <img [src]="image" [alt]="product.name + ' view'" [class.visible]="imagesLoaded">
+            <div class="loading-overlay" *ngIf="!imagesLoaded">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        <h1>{{product.name}}</h1>
+        <div class="price">${{product.price}}</div>
+        
+        <div class="description">
+          <h3>Description</h3>
+          <p>{{product.description}}</p>
+        </div>
+
+        <div class="specifications" *ngIf="product.specifications">
+          <h3>Specifications</h3>
+          <ul>
+            <li *ngFor="let spec of getSpecificationsList(product)">
+              <span class="label">{{ spec.label }}:</span>
+              <span class="value">{{ spec.value }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="quantity-selector">
+          <h3>Quantity</h3>
+          <div class="quantity-controls">
+            <button (click)="updateQuantity(-1)" [disabled]="quantity <= 1">-</button>
+            <span>{{quantity}}</span>
+            <button (click)="updateQuantity(1)" [disabled]="quantity >= 10">+</button>
+          </div>
+        </div>
+
+        <button class="add-to-cart-btn" (click)="addToCart()">
+          <i class="fas fa-shopping-cart"></i>
+          Add to Cart
+        </button>
+
+        <div class="additional-info">
+          <div class="info-item">
+            <i class="fas fa-truck"></i>
+            <span>Free shipping on orders over $50</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-undo"></i>
+            <span>30-day return policy</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-lock"></i>
+            <span>Secure checkout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="related-products" *ngIf="relatedProducts.length">
+      <h2>You May Also Like</h2>
+      <div class="related-grid">
+        <div class="related-product" *ngFor="let product of relatedProducts">
+          <div class="product-image" [class.loading]="!imagesLoaded">
+            <img [src]="product.image" [alt]="product.name" [class.visible]="imagesLoaded">
+            <div class="loading-overlay" *ngIf="!imagesLoaded">
+              <div class="spinner"></div>
+            </div>
+          </div>
+          <h3>{{product.name}}</h3>
+          <p class="price">${{product.price}}</p>
+          <a [routerLink]="['/products', product.id]" class="view-details-btn">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
